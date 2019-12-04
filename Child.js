@@ -67,6 +67,7 @@ function handleClickQuestion(e) {
  //denna eller funktion gör vi i falla att det är null i localstarage
   function loadData(){
     //const q = loadData();
+
     try {
       const storage = JSON.parse(window.localStorage.getItem("data"));
 
@@ -99,6 +100,7 @@ function renderActivities(HHH){
 function ActivityInfo(HHH) {
   const a = HHH.a;
 console.log("eheheh");
+console.log(a);
   let barProgress = timeCalc(a.totTime, a.repTime)+"%";
   var same = colour(i);
   
@@ -106,7 +108,7 @@ console.log("eheheh");
     <div className="WrapperActivity" onClick={handleClickActivity}>
 
       {/*Här ska vi försöka skriva ut arrayen med dess namn och tid */}
-      <p className="ActivityName">{a.name}</p>
+      <p className="ActivityName">{a.id}</p>
       <div className="ActivityDetails">
           <p className="ActivityPercentage">{timeCalc(a.totTime, a.repTime)}% done</p>
           <p className="ActivityMoreDetails">More details</p>
@@ -133,6 +135,10 @@ console.log("eheheh");
   console.log("Pankaka");
   console.log(HHH);
   console.log("majs");
+
+     console.log("Pappa");
+       console.log(HHH.length);
+       console.log("Mamma");
 
     /*meny lista typ*/
     const [menuWidth, changeMenuWidth] = useState(0);     
@@ -271,9 +277,9 @@ console.log("eheheh");
    
       <div className="menuClass" style={{width: menuWidth}}>
         <div className="menuID" style={{width: menuWidth}}></div>
-        <Link to="/ReportTime.js"><div className="reportButton" style={{width: buttonWidth}}>{reportTime()}</div></Link>
-        <div className="addButton" style={{width: buttonWidth}}>{addActivity()}</div>
-        <div className="deleteButton" style={{width: buttonWidth}}>{deleteActivity()}</div>
+        <Link to="/ReportTime.js"><button className="reportButton" style={{width: buttonWidth}}>{reportTime()}</button></Link>
+        <button className="addButton" style={{width: buttonWidth}}>{addActivity()}</button>
+        <button className="deleteButton" style={{width: buttonWidth}}>{deleteActivity()}</button>
       </div>
       
       {/*Question List*/}

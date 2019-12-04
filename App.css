@@ -2,26 +2,69 @@ h1{
   color: #DDDDDD;
   font-size: calc(14px + 2vmin);
   margin-bottom: 0;
+  text-align: center;
+  margin: 0;
 }
 
 p{
   color: #C9C7CE;
 }
 
+html{
+  background-color: #2C3535;
+}
+
 div{
   text-align: center;
-  background-color: #2C3535;
   font-family: "Roboto";
 }
 
+button{
+  border-color: transparent;
+  margin-bottom: 20px;
+  height: 40px;
+  width: 100px;
+  border-radius: 35px;
+  vertical-align: middle;
+}
+
+input{
+  height: 40px;
+  border: none;
+  text-indent: 10px;
+  font-size: 20px;
+  font-family: "Roboto";
+  background-color: #4C5454;
+  color: #C9C7CE;
+}
+
+input:focus {
+  background-color: #C9C7CE;
+  color: black;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input::-webkit-input-placeholder{
+  color: #262e2e;
+} 
+
 .App{
+  height: 100%;
+  background-color: #2C3535;
+}
+
+#bars{
   height: 100%;
 }
 
 .App-header {
-  display: inline-block;
+  display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   color: white;
   position: -webkit-sticky;
   position: sticky;
@@ -30,23 +73,31 @@ div{
   z-index: 10;
   padding: 0;
   width: 100%;
+  background-color: #2C3535;
+}
+
+.title{
+  margin-top: 30px;
 }
 
 .description{
 margin: 0;
 }
 
+#headerBars{
+display: inline-block;
+}
+
 .MainBody{
-  /*height: 76%;*/
 }
 
 .App-bottom{
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   bottom: 0;
   height: 70px;
   width: 100%;
   z-index: 9;
+   background-color: #2C3535;
 }
 
 .Dots{
@@ -56,7 +107,7 @@ margin: 0;
   line-height: 70px;
 }
 
-{/*Bars - "child"*/}
+/*Bars - "child"*/
 .WrapperActivity{
   height: 65px;
   width: 80%;
@@ -66,7 +117,6 @@ margin: 0;
   border-width: 1px;
   padding: 5px 10px 5px 10px;
   margin-bottom: 25px;
-  /*background-color: #1D2A2A; */
   background-color: #262e2e;
 }
 
@@ -107,7 +157,7 @@ margin: 0;
   border-radius: 30px;
 }
 
-{/*Menu*/}
+/*Menu*/
 .MenuButton{
   position: -webkit-sticky;
   position: sticky;
@@ -211,10 +261,11 @@ margin: 0;
 .buttonText{
   color: black;
   font-size: 20px;
-  margin-top: 12px;
+  margin: auto;
+  text-align: center;
 }
 
-{/*Question Button*/}
+/*Question Button*/
 .QuestionButton{
   position: -webkit-sticky;
   position: sticky;
@@ -244,16 +295,24 @@ margin: 0;
   position: fixed;
 }
 
+/*Help page*/
 .questionWrapper{
 height: 100%;
+
+}
+
+#helpHeader{
+  background-color: #2C3535;
 }
 
 .questionID{
   height: inherit;
   top: 0;
-  position: absolute;
+  bottom: 0;
+  position: fixed;
   z-index: 129;
   overflow: scroll;
+  background-color: #2C3535;
 }
 
 .questionText{
@@ -262,6 +321,7 @@ height: 100%;
   margin-top: 0;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 25px;
   border-style: solid;
   border-color: #C9C7CE;
   border-width: 1px;
@@ -270,9 +330,6 @@ height: 100%;
   background-color: #262e2e;
 }
 
-.title{
-  margin-top: 30px;
-}
 
 .helpTitle{
   color: #DDDDDD;
@@ -294,93 +351,397 @@ height: 100%;
   height: 100vh;
 }
 
-#addActivityBody{
-
-}
-
 .WrapperAddActivity{
   border-style: solid;
   border-color: #C9C7CE;
   border-width: 1px;
   width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #262e2e;
-  /*padding-left: 5%;
-  padding-right: 5%;*/
-}
-
-.WrapperNameDates{
-  background-color: blue;
-}
-
-.WrapperAddTime{
-  background-color: red;
-}
-
-input{
-  height: 30px;
-}
-
-.textBox{
-  width: 80%;
-}
-
-.dateBox{
-  float: left;
-  width: 90px;
-}
-
-.TimeBox{
-  width: 50px;
-  float: left;
-}
-
-.WrapperDateText{
-  display: inline-block;
-  width: 100%;
-}
-
-.WrapperDate{
-  display: inline-block;
-  width: 80%;
+  justify-content: center;
   margin: auto;
 }
 
-.WrapperStartDate{
-  background-color: blue;
-  width: 40%;
-  float: left;
-  }
-
-.WrapperEndDate{
-  background-color: green;
-  width: 40%;
-  float: right;
+/*Activity name*/
+.WrapperAddName{
+  background-color: inherit;
+  width: 80%;
+  margin: auto;
 }
 
 .addActivityText{
   margin-bottom: 0;
   float: left;
+  font-size: 18px;
 }
 
-#activityName{
-  padding-left: 10%;
-}
-
-#activityNameInput{
-  float: left;
+.textBox{
   width: 100%;
+  text-transform: capitalize;
+}
+
+/*Start and End dates*/
+.WrapperDate{
+  display: inline-block;
+  width: 80%;
+  margin: auto;
+  background-color: inherit;
+  margin-top: 10px;
+}
+
+.WrapperStartDate{
+  width: 100px;
+  float: left;
+  }
+
+.WrapperEndDate{
+  width: 100px;
+  float: right;
+}
+
+.dateBox{
+  float: left;
+  width: 100px;
+}
+
+/*Set time*/
+.WrapperAddTime{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: right;
+  width: 80%;
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.addActivityTime{
+  float: left;
+  margin: 0;
+  width: 80px;
+  text-align: left;
+  font-size: 18px;
+}
+
+.timeBox{
+  width: 45px;
+  float: right;
+  margin: 0;
+  text-align: justify;
+}
+
+.time{
+  width: 70%;
+  display: flex; 
+  justify-content: flex-end;
+  vertical-align: middle;
+  align-items: center;
+}
+
+#min{
+  text-indent: 5px;
+}
+
+#min:focus{
+  text-indent: 10px;
+}
+
+.timeIndicator{
+  width: 25px;
+  margin: 0;
+  font-size: 18px;
+}
+
+/*Buttons in "Add Activity"*/
+.addActivityButton{
+  width: 80%;
+  height: 40px;
+  padding: 30px 0;
+  margin: auto;
 }
 
 .saveButton{
-  height: 40px;
-  width: 100px;
-  border-radius: 35px;
   background-color: #84b424;
-  border-color: transparent;
+  float: right;
 }
 
-#saveButtonText{
-  margin-top: 7px;
+.cancelButton{
+  background-color: #f92672;
+  float: left;
 }
+
+
+
+
+/* KOD för report time sidan*/
+
+
+h1{
+  color: #DDDDDD;
+  font-size: calc(10px + 2vmin);
+}
+
+p{
+  color: #C9C7CE;
+}
+
+div{
+  text-align: center;
+  background-color: #2C3535;
+  font-family: "Roboto";
+}
+
+/* Kod för att få texten över de linjerade rutorna alignade
+och snygga */
+.ReportTimeText{
+text-align: left;
+}
+
+.WrapperMain{
+  margin:20px;
+  padding-top:20px;
+  width: 80%;
+  margin: auto;
+}
+
+#TimeStudied{
+  padding-top: 40px;
+}
+
+
+
+
+.App{
+  height: 100%;
+}
+
+.App-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 100px;
+  z-index: 10;
+}
+
+
+.WrapperAddTime{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+
+/* få hours and min rutorn i center */
+#centerDiv{
+  width: 50%;
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
+
+.addActivityTime{
+  float: left;
+  margin: 0;
+  width: 80px;
+  text-align: left;
+}
+
+.TimeBox{
+  width: 50px;
+  float: left;
+  margin: 0;
+  padding: 1px;
+}
+
+.timeIndicator{
+  width: 25px;
+  margin: 0;
+}
+
+
+
+.border{
+  border-style: solid;
+  border-color: #C9C7CE;
+  border-width: 1px;
+  margin-top:-12px;
+}
+
+#activitySetTime{
+  height: 30px;
+  background-color:#242B2B; 
+}
+
+
+/*Button i ReportTime */
+.buttonText{
+  color: black;
+  font-size: 20px;
+  margin: auto;
+  text-align: center;
+}
+
+
+.ReportButtonText{
+  width: 200px;
+  height: 40px;
+  background-color: #fd971f;
+  float: center;
+  border-radius: 35px;
+  border-color: transparent;
+  margin-top: 20%;
+  margin-bottom: 59%;
+}
+
+
+
+/* Textfields i ReportTime */
+input{
+  height: 40px;
+  border: none;
+  text-indent: 10px;
+  font-size: 20px;
+  font-family: "Roboto";
+  background-color: #4C5454;
+  color: #C9C7CE;
+}
+
+input:focus {
+  background-color: #C9C7CE;
+  color: black;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input::-webkit-input-placeholder{
+  color: #262e2e;
+} 
+
+#hh{
+  width: 60px;
+}
+
+#mm{
+    width: 60px;
+}
+
+#hours{
+    font-size: 18px;
+    margin-right: 20px;
+    margin-left: 5px;
+}
+
+#minutes{
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+/* Här slutar kod för report time sidan */
+
+
+/*Donute            -------------------------------*/
+
+.App-header{
+  color: #DDDDDD;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 100px;
+  z-index: 10;
+  padding: 0;
+  
+  /*font-family: "myFirstFont";*/
+}
+
+.courses{
+  color: red;
+}
+
+.donut{
+  position: relative;
+  height: 100%;
+  /*margin: 30px auto 10px auto;*/
+  width: 100%;
+}
+html{
+  height: 100%;
+}
+#root{
+  height: 100%;
+}
+
+.recTime{
+  position: absolute;
+  text-align: center;
+  font-size: 24px;
+  left: 0;
+  width: 100%;
+  top: 38%;
+  color: #DDDDDD;
+}
+
+table{
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #DDDDDD;
+  /*border: 1px solid white;*/
+  background-color: #262E2E;
+  padding: 15px 0 15px 0;
+
+}
+
+.recTimeText{
+  margin: 0;
+}
+
+#myData{
+  margin: 20px auto 20px auto;
+}
+
+.rowsLabel{
+  height: 40px;
+}
+
+.color{
+  width: 15px;
+  padding-left: 5%;
+  padding-right: 25px;
+}
+.box{
+  width: 16px;
+  height: 15px;
+}
+
+.idLabel{
+  text-align: left;
+}
+
+.timeLabel{
+  width: 200px;
+  text-align: center;
+}
+
+.App{
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+
+/*  Donut ------------------------------------------*/
