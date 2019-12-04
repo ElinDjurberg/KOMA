@@ -67,10 +67,10 @@ function ReportTime(){
   return(
     <div>
       
-
+/*
       {redirect === false && 
       <App fixObjectEtikett={fixObject} />
-      }
+      }*/
      
       
     </div>

@@ -1,20 +1,19 @@
 
 
 //import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './App.css';
 import { useState } from 'react';
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import ReportTime from './ReportTime';
+import ReportTime from "./ReportTime.js";
+
+
+
+
 
 let i = 0;
 
-console.log("h")
-
 function incrementID(){
-
-
-console.log("a")
   i++;
 }
 
@@ -53,46 +52,59 @@ function timeCalc(total, part){
 }
 
 
-
 function handleClickActivity(e) {
   e.preventDefault();
-  console.log('hej du klickade rätt typ');
+  console.log(' du klickade rätt typ');
 }
 
 function handleClickQuestion(e) {
   e.preventDefault();
-  console.log('hej du klickade rätt typ igen');
+  console.log(' du klickade rätt typ igen');
 }
 
 
-function inData(props){
-	const b = props.courses;
+
+ //denna eller funktion gör vi i falla att det är null i localstarage
+  function loadData(){
+    //const q = loadData();
+    try {
+      const storage = JSON.parse(window.localStorage.getItem("data"));
+
+      return storage || [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+
+function renderActivities(HHH){
+	//const b = HHH.courses;
+  const b = HHH;
+ //  console.log(b[0].name);
 	console.log("YOLO");
-	console.log(b);
+  console.log(b);
+  console.log("YODO");
+  console.log(HHH[0].name);
+ //console.log(HHH.name);
+
+
  return (
-      b.map(c=> (<ActivityInfo key={c.name} a={c} />))
+     HHH.map(c=> (<ActivityInfo key={c.name} a={c} />))
+
     );
 }
 
 
-
-
-
 /*Funktion som ger innehåll genom att skicka in array av objekt*/
-function ActivityInfo(props) {
-const a = props.a;
-	console.log(props);
-	
-
-	console.log(a)
-	  let barProgress = timeCalc(a.totTime, a.repTime)+"%";
-	  var same = colour(i);
-console.log(barProgress);
-   return(
+function ActivityInfo(HHH) {
+  const a = HHH.a;
+console.log("eheheh");
+  let barProgress = timeCalc(a.totTime, a.repTime)+"%";
+  var same = colour(i);
+  
+  return(
     <div className="WrapperActivity" onClick={handleClickActivity}>
 
-{console.log("Ketchup"),
-console.log(a.name)}
       {/*Här ska vi försöka skriva ut arrayen med dess namn och tid */}
       <p className="ActivityName">{a.name}</p>
       <div className="ActivityDetails">
@@ -105,97 +117,146 @@ console.log(a.name)}
     
     </div>
   )
-
 }
-
 
 
 //}//den här är tillaggd var sist förut!!!!!!!!!!!!
 /*renderar sidelementen typ*/
-	function APPChild(props) {
-	 i = 0;
-	const [menuWidth, changeMenuWidth] = useState(0);
-	const [buttonWidth, changeButtonWidth] = useState(0);
-  const [redirect, setRedirect] = useState(false);
+	function APPChild(HHH) {
+	  i = 0;
+  	var HHH = loadData();
 
-  function HandleClickMenu(){
-      
-    changeMenuWidth("100%");
-    changeButtonWidth("250px");
-   
-    console.log('GRATTIS DU KAN KLICKA typ');
-  }
+   console.log("JOOOJJJ");
+   console.log(loadData());
+  console.log("Elin");
+ 
+  console.log("Pankaka");
+  console.log(HHH);
+  console.log("majs");
+
+    /*meny lista typ*/
+    const [menuWidth, changeMenuWidth] = useState(0);     
+    const [buttonWidth, changeButtonWidth] = useState(0);
+    const [hideMenu, triggerHideMenu] = useState(true);
+    const [hideQuestion, triggerHideQuestion] = useState(true); 
+    const [questionWidth, changeQuestionWidth] = useState(0); 
+    const [questionOpacity, changeQuestionOpacity] = useState("100%"); 
+    const [closeQuestionOpacity, changeCloseQuestionOpacity] = useState("0%");
+   // const [redirect, setRedirect] = useState(false);
 
 
- function reportTime(){
-  if (buttonWidth === "250px"){
-    return(
-      <p>Report Time</p>
-     /* <Route>
-      <Route path="/ReportTime" component ={ReportTime} />
-      </Route> */
+
+
+    /* om man klickar på question button */
+    function handleClickQuestion() {
+      if(hideQuestion){
+        triggerHideQuestion(false);
+        changeQuestionWidth("100%");
+        changeQuestionOpacity("0%");
+        changeCloseQuestionOpacity("100%");
+       
+      }
+      else{
+        triggerHideQuestion(true);
+        changeQuestionWidth("0");
+        changeQuestionOpacity("100%");
+        changeCloseQuestionOpacity("0%");
+      }
+      console.log(' du klickade på frågetecknet');
+    }
+
+    function questionText(){
+      if(hideQuestion === false){
+        return(
+          <div className="questionWrapper">
+            <div className="App-header">
+            <h1 className="title">HELP<br/></h1>
+            </div>
+            <div className="questionText">
+              <p className="helpTitle">To do List</p>
+              <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
+              <p className="helpTitle">To do List</p>
+              <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
+              <p className="helpTitle">To do List</p>
+              <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
+              <p className="helpTitle">To do List</p>
+              <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
+              <p className="helpTitle">To do List</p>
+              <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
+            </div>
+          </div>
+        );
+      }
+    }
+
+
+     /* om man klickar på meny-knappen */
+    function HandleClickMenu(){       /*gör likadant för allt annat, typ?*/
+      if(hideMenu){                   /* öppnar menyn */
+        triggerHideMenu(false);
+        changeMenuWidth("100%");
+        changeButtonWidth("200px");
+      }
+      else{                           /* göm menyn */
+        triggerHideMenu(true);  
+        changeMenuWidth("0");
+        changeButtonWidth("0");
+      }
+    }
+
+  function reportTime(){
+    if (hideMenu === false){
+      return(
+        <p className="buttonText">Report Time</p>
       );
+    }
   }
- }
+/*
+  function handleClickReport() {
 
- function handleClickReport() {
-
-  console.log('hej du klickade på Report');
+  console.log(' du klickade på Report');
    setRedirect(true);
 }
-
- function addActivity(){
-  if (buttonWidth === "250px"){
-    return(
-      <p>Add Activity</p>
+*/
+  function addActivity(){
+    if (hideMenu === false){
+      return(
+        <p className="buttonText">Add Activity</p>
       );
+    }
   }
- }
-
-
 
   function deleteActivity(){
-  if (buttonWidth === "250px"){
-    return(
-      <p>Delete Activity</p>
+    if (hideMenu === false){
+      return(
+        <p className="buttonText">Delete Activity</p>
       );
+    }
   }
- }
-  return (
 
+  return (
     <div className="App">
  
       {/*Header*/}
       <div className="App-header">
-        <h1>APPNAME</h1>
-
-        {/*Question Button*/}
-        <div className="QuestionButton" onClick={handleClickQuestion}>
-         <p className="question">?</p>
-        </div>
+        <h1 className="title">APPNAME</h1>
+         <p className="description">My Activities</p>
       </div>
-     
+
+      {/*Question Button*/}
+      <div className="QuestionButton" onClick={handleClickQuestion}>
+       <p className="question">?</p>
+      </div>
+
       {/*Main body*/}
       <div className="MainBody">
-        {inData(props)}  {/*här ska vi rendera ActivityInfo, för att skriva ut kursinfo*/}
-    
+        {renderActivities(HHH)}  {/*här ska vi rendera ActivityInfo, för att skriva ut kursinfo*/}
       </div>
 
       {/*Footer*/}
       <div className="App-bottom">
       <p className="Dots">Bottom Header</p>
       </div>
-
-       <div id="menuID" style={{width: menuWidth}}></div>
-
-        <div className="buttonWrapper" style={{width: buttonWidth}}>
-        <div className="reportButton" style={{width: buttonWidth}} onClick={handleClickReport}>{reportTime()}</div>
-        
-
-
-        <div className="addButton" style={{width: buttonWidth}}>{addActivity()}</div>
-        <div className="deleteButton" style={{width: buttonWidth}}>{deleteActivity()}</div>
-       </div>
 
       {/*Menu Button*/}
       <div className="MenuButton" onClick={HandleClickMenu}>
@@ -206,32 +267,27 @@ console.log(a.name)}
         </div>
       </div>
 
-        <div>
+      {/*Menu List*/}
    
-//Det är detrta vi ska fixa
-      {redirect === false && 
-      <APPChild />
-      }
-      {redirect === true && 
-      <ReportTime  />
-      }
+      <div className="menuClass" style={{width: menuWidth}}>
+        <div className="menuID" style={{width: menuWidth}}></div>
+        <Link to="/ReportTime.js"><div className="reportButton" style={{width: buttonWidth}}>{reportTime()}</div></Link>
+        <div className="addButton" style={{width: buttonWidth}}>{addActivity()}</div>
+        <div className="deleteButton" style={{width: buttonWidth}}>{deleteActivity()}</div>
+      </div>
       
+      {/*Question List*/}
+      <div className="questionID" style={{width: questionWidth}}>
+        {questionText()}
+      </div>
+
+
+    <div>
+     
     </div>
-   
+  );
+
     </div>
-
-
-
-
-  
-    
-
-
-      
-      //{redirect === true && <ReportTime /> }
-    
-    
-
   );
 }
 

@@ -5,7 +5,7 @@ import './App.css';
 // import our component
 import ReportTime from "./ReportTime.js";
 import Child from "./Child.js";
-import AppFormFirstPage from "./AppFormFirstPage.js";
+
 
 // main component of app is always one page (depending on url path) + Menu below
 const App = () => {
@@ -15,11 +15,13 @@ const App = () => {
     <Router>
 
       <Switch>
-        <Route exact path="/" component={AppFormFirstPage} /> {/*Den första visas som default*/}
-        <Route path="/Child.js" component={Child} />
-        <Route path="/ReportTime.js" component={ReportTime} />
+        <Route exact path="/Child" component={Child} />
+        <Route path="/Child" component={Child} />
+        <Route path="/ReportTime" component={ReportTime} />
         
       </Switch>
+
+      <Menu/>
 
     </Router>
 
